@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	
+	
+	
+	
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"> 
+	
+	<property name="dataSource" ref="dataSource"></property>   <!-- 1번 만들고  config.xml 만들고 아래  -->
+	<property name="configLocation" value="classpath:/mybatis-config.xml"></property>	<!-- 파일 위치주는거 classpath 가  src/main/resources 여기 가르킨다네  -->
+	<property name="mapperLocations" value="mappers/*.xml"></property>	
+	
+	
+	</bean> 
+	
+	
+	
+	<!-- try catch 잡아주려고 하는얘  -->
+	<bean id="sessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+	<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>	
+	</bean>
+	
+	
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	<property name="driverClassName"  value="com.mysql.jdbc.Driver" > </property>
+	<property name="url" value="jdbc:mysql://localhost:3306/sample_db?useSSL=false"></property>
+	<property name="username" value="bit92"></property>
+	<property name="password" value="bit92"></property>
+	</bean>	
+	
+		
+	<bean id = "english" class="org.zerock.service.HelloService"></bean>
+		
+	<bean id="koreanMsg" class="org.zerock.service.KoreanMsg"></bean>
+		
+	<bean id="korean" class="org.zerock.service.KoreanHello">
+	<constructor-arg ref="koreanMsg">
+	
+	</constructor-arg>
+	</bean>
+	
+	<context:annotation-config></context:annotation-config>
+	<context:component-scan base-package="org.zerock.persistence"></context:component-scan>
+	
+</beans>

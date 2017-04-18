@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="org.zerock.TimeMapper"> <!-- 충동 피할라고 만드는거 아무거나 넣어도 상관무 관례적으로 자바 패키지명과 이름을 비슷하게줌    -->
+  
+  	<select id="getTime" resultType="java.lang.String">  <!-- 받을 타입 설정 -->
+  	select now()         <!-- 세미콜론 붙이지마!!!!!!!!!!!!!!!!! 노노노노노노노 !!!! -->
+  	</select>  <!-- fullname :org.zerock.TimeMapper.getTime -->
+  
+  </mapper>
+  
+  
