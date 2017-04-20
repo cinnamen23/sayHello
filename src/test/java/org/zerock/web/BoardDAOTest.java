@@ -1,5 +1,7 @@
 package org.zerock.web;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.junit.Test;
@@ -7,6 +9,7 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.zerock.domain.BoardVO;
+import org.zerock.domain.PageVO;
 import org.zerock.persistence.BoardDAO;
 
 
@@ -17,6 +20,18 @@ public class BoardDAOTest {
 
 	@Inject
 	BoardDAO dao;
+	
+	
+	@Test
+    public void testList(){
+        
+        List<BoardVO> list = dao.list(new PageVO());
+        
+        list.forEach(board -> System.out.println(board));
+        
+    }
+	
+	
 	
 	@Test
 	public void testDummy(){

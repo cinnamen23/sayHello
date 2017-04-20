@@ -14,9 +14,7 @@
 	
 	<property name="dataSource" ref="dataSource"></property>   <!-- 1번 만들고  config.xml 만들고 아래  -->
 	<property name="configLocation" value="classpath:/mybatis-config.xml"></property>	<!-- 파일 위치주는거 classpath 가  src/main/resources 여기 가르킨다네  -->
-	<property name="mapperLocations" value="mappers/*.xml"></property>	
-	
-	
+	<property name="mapperLocations" value="classpath:/mappers/*.xml"></property>	  <!-- 처음에 여기 클래스패스 없어서 안됬었다 .  -->	
 	</bean> 
 	
 	
@@ -31,8 +29,9 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-	<property name="driverClassName"  value="com.mysql.jdbc.Driver" > </property>
-	<property name="url" value="jdbc:mysql://localhost:3306/sample_db?useSSL=false"></property>
+	<!-- <property name="driverClassName"  value="com.mysql.jdbc.Driver" > </property>   지워주세요 ~-->
+	<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
+	<property name="url" value="jdbc:log4jdbc:mysql://localhost:3306/sample_db?useSSL=false"></property>
 	<property name="username" value="bit92"></property>
 	<property name="password" value="bit92"></property>
 	</bean>	

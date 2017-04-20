@@ -5,7 +5,15 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="org.zerock.persistence.BoardDAO">
-  	<insert id="create" parameterType="org.zerock.domain.BoardVO" >
+  	<insert id="create" parameterType="BoardVO" >
   	insert into tbl_board(title,content)values(#{title},#{content})
   	</insert>
+  	
+  	<select id="list" parameterType="PageVO" resultType="BoardVO">
+  	<![CDATA[
+  	select * from  tbl_board where bno>0 order by bno desc limit #{skip},#{amount}
+  	]]>
+  	</select>
+  	
+  	
   </mapper>

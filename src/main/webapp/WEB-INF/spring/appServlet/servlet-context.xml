@@ -16,12 +16,12 @@
 	<resources mapping="/resources/**" location="/resources/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
-	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"> <!--Resolver 이거 나오면 해석기라고 알면됨  -->
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="org.zerock.web" />
+	<context:component-scan base-package="org.zerock.web" />    <!--어노테이션 인식할려고  -->
 	
 	
 	

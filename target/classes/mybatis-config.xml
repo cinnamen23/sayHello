@@ -5,10 +5,8 @@
   
   <configuration>
   
-  <mappers>	
-  	<!-- <mapper resource="mappers/TimeMapper.xml"/>  맵퍼를 지웟어요 !-->
-  	
-  	
-  </mappers>
+ <typeAliases >
+ <package name="org.zerock.domain"/>
+ </typeAliases> 
   
   </configuration>

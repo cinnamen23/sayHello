@@ -1,22 +1,16 @@
 package org.zerock.persistence;
 
-import javax.inject.Inject;
+import java.util.List;
 
-import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 import org.zerock.domain.BoardVO;
+import org.zerock.domain.PageVO;
 
 @Repository
-public class BoardDAO {
+public class BoardDAO extends GenericDAO<BoardVO, Integer>{
 
-	@Inject
-	private SqlSessionTemplate sess;
-	
-	
-	public void create(BoardVO vo){
-		
-		sess.insert("org.zerock.persistence.BoardDAO.create", vo);
-		
+	public List<BoardVO> list(PageVO param){
+		return sess.selectList(mapper+".list",param);
 	}
 	
 }
